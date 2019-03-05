@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
+<!-- name时起一个名字，我们可以通过这个名字来利用容器获取对象
+	 name可以使用特殊字符
+	 name可以重复
+	 我们在实际开发中并不推荐将多个对象名字命名为重复的 -->
+	 <!-- id与name作用基本相同，但不推荐使用。它不支持特殊字符，不能重复 -->
+<!-- class对象是被管理对象的全报名，spring会通过这个包名来创建对象 -->
+<!-- request 在web环境下，如果scope属性为request，那么这个对象被创建出来它的生命周期会与request请求一致 -->
+<!-- session同理，生命周期与session一致 -->
+	<bean name="user" class="com.catherine.bean.User" lazy-init="true" scope="singleton" init-method="userInit" destroy-method="userDestroy">
+		<property name="u_id" value="2"></property>
+	</bean>
+	<import resource="/applicationContext_Injection.xml"/>
+</beans>
